@@ -42,22 +42,26 @@ Given the Jumble _dict_ object and an input word, it will search for all jumble 
 
 # Complexity analysis
 
-Consider N the number of words on file and L the input word length. On [parse_word_list_file](#parse_word_list_file) function, we iterate over all words in file O(N) and run the following operations with their given complexity:
-1. strip: O(L)
-2. lower: O(L)
-3. sorted: O(L log L)
+Consider N the number of words on file and S the length of a given word. On [parse_word_list_file](#parse_word_list_file) function, we iterate over all words in file O(N) and run the following operations with their given complexity:
+1. strip: O(S)
+2. lower: O(S)
+3. sorted: O(S log S)
 4. setdefault: O(1)
 5. append: O(1)
 
 Given that, the complexity of parse_word_list_file function is: 
 
-O(N) \* (O(L) + O(L) + O(L log L) + O(1)) = O(N \* (2L + L log L + 1)) = O(2NL + NL log L + N) = **O(NL log L)**
+O(N) \* (O(S) + O(S) + O(S log S) + O(1)) = O(N \* (2S + S log S + 1)) = O(2NS + NS log S + N) = O(NS log S)
+
+The average word length in English is 4.7 ~= 5 characters, so by replacling we get:
+
+O(N 5 log 5) = **O(N)**
 
 
 On [jumble](#jumble), consider L the length of the input word, R the combination size, N the number of words from the input file, and [C() the choose operator](https://en.wikipedia.org/wiki/Combination#Number_of_k-combinations). Then, we do the following operations:
 * Loop R from 2 to input word length: so O(L-1) = O(L)
   * Find the combinations, and iterate over their result: [O(C(L,R)\*R)](https://stackoverflow.com/questions/53419536/what-is-the-computational-complexity-of-itertools-combinations-in-python)
-    * For each combination, we lower and sort, worst case: O(L) + O*(L log L)
+    * For each combination, we lower and sort, worst case it has length L: O(L) + O*(L log L)
     * Then we search for the word on the jumble dict: O(1)
     * Append the result to another list: O(1)
 
@@ -67,4 +71,4 @@ O(2^L) \* (O(L log L) + O(L) + O(1) + O(1)) = **O(2^L * L log L)**
 
 On main, we iterate over the results from jumble and print. In worst case, we have all words from the initial file, so for printing the results we would have an O(N) complexity. Finally, adding main, jumble, and parse_word_list_file complexities, we get:
 
-O(NL log L) + O(N) + O(2^L * L log L)  = **O(NL log L) + O(2^L * L log L)**
+O(N) + O(N) + O(2^L * L log L)  = **O(N) + O(2^L * L log L)**
