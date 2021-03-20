@@ -30,13 +30,13 @@ god
 As a reference for the time complexity, I've used [this official Python page](https://wiki.python.org/moin/TimeComplexity) and [these lecture notes](https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt).
 I've separated the code into the following parts:
 
-## main
+### main
 Parses the arguments, calls the [parse_word_list_file](#parse_word_list_file) and [jumble](#jumble) functions, then prints the result.
 
-## parse_word_list_file
+### parse_word_list_file
 Creates a jumble dictionary from a file containing a list of words. The keys of this _dict_ are lowercase words with their letters sorted alphabetically, while the values are a list of original words. Storing the lowercase sorted words as the key ensures we will find anagrams with O(1) using Python _dict_.
 
-## jumble
+### jumble
 Given the Jumble _dict_ object and an input word, it will search for all jumble solutions for this word. Since we also want to search for substrings, it first finds the unique combinations of all letters for the input, from 2 to input word length. For each combination, we sort it and remove any whitespaces, then search on our jumble dictionary. If we find the sorted word on the jumble _dict_, we then merge the original words list our temporary _dict_ object. We use it to avoid duplicates. The implementation of [itertools.combinations](https://docs.python.org/3/library/itertools.html#itertools.combinations) returns unique combinations considering the **position**, not the value of the element. For example, the word "robot" would give the combination "ot" two times. However, as we will see in [Complexity Analysis](#complexity-analysis) section, the complexity of this code scales exponentially with the size of the input word, and the insertion on a _dict_ is constant. So, in terms of time complexity, it is better to not remove the duplicates and let _dict_ deal with the duplicates, because it has an O(1) index and store complexity.
 
 
