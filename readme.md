@@ -53,7 +53,7 @@ Given that, the complexity of parse_word_list_file function is:
 
 O(N) \* (O(S) + O(S) + O(S log S) + O(1)) = O(N \* (2S + S log S + 1)) = O(2NS + NS log S + N) = O(NS log S)
 
-[The average word length in English is 4.7 ~= 5 characters](https://wolfgarbe.medium.com/the-average-word-length-in-english-language-is-4-7-35750344870f#:~:text=The%20average%20word%20length%20in%20English%20language%20is%204.7%20characters), so by replacling we get:
+[The average word length in English is 4.7 ~= 5 characters](https://wolfgarbe.medium.com/the-average-word-length-in-english-language-is-4-7-35750344870f#:~:text=The%20average%20word%20length%20in%20English%20language%20is%204.7%20characters), so by replacling S we get:
 
 O(N 5 log 5) = **O(N)**
 
