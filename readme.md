@@ -78,3 +78,10 @@ To evaluate this result, I've prepared the script [complexity_experiment.py](com
 
 ![plot](./experiment.png)
 
+# Unit tests
+
+To test this software and allow a safe improvement of its performance without breaking the initial requirements, I used the Python built-in library [unittest](https://docs.python.org/3/library/unittest.html) to implement tests. To run them, execute the following command from the project directory:
+
+``` bash
+python3 -m unittest tests.tests.JumbleTests
+```
