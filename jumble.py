@@ -16,12 +16,13 @@ def jumble(jumble_dict, word):
     words = {}
     for i in range(2, len(word)+1):  # Getting combinations of words from 2 to word length
         for combination in itertools.combinations(word.lower(), i):
-            combination = "".join(sorted(combination)) # sorting word so we can find it on dict
+            # sorting word so we can find it on dict
+            combination = "".join(sorted(combination))
             if combination in jumble_dict:
                 # Adding list to dict as keys
                 words.update(dict.fromkeys(jumble_dict[combination]))
-    if word in words: 
-        del words[word] # Removing input word from result
+    if word in words:
+        del words[word]  # Removing input word from result
     return words.keys()  # Getting dict keys as a list
 
 

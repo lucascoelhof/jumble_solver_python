@@ -72,3 +72,9 @@ O(2^L) \* (O(L log L) + O(L) + O(1) + O(1)) = **O(2^L * L log L)**
 On main, we iterate over the results from jumble and print. In the worst case, we have all words from the initial file, so for printing the results we would have an O(N) complexity. Finally, adding main, jumble, and parse_word_list_file complexities, we get:
 
 O(N) + O(N) + O(2^L * L log L)  = **O(N) + O(2^L * L log L)**
+
+# Experiments 
+To evaluate this result, I've prepared the script [complexity_experiment.py](complexity_experiment.py), which runs the jumble function with a list of words with an increasing number of letters. The following figure shows the execution time in seconds on Y-axis against the number of letters in the X-axis. We can see the exponential behavior on execution time, as we found in section [Complexity analysis](#complexity-analysis).
+
+![plot](./experiment.png)
+
