@@ -11,7 +11,7 @@ def jumble(jumble_dict, word):
         jumble_dict (dict[list[str]]): Dictionary contained hashed words
         word (str): Input word
     Returns
-        list of str: Jumble solutions
+        list[str]: Jumble solutions
     """
     words = {}
     for i in range(2, len(word)+1):  # Getting combinations of words from 2 to word length
